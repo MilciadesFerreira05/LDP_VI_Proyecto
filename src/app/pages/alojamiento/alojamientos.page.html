@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Alojamiento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-margin ion-no-padding">
+    <ion-row class="ion-text-center ion-align-items-center ion-padding-bottom ion-padding-top header">
+        <ion-col>id</ion-col>
+        <ion-col>Descripcion</ion-col>
+        <ion-col>Ubicacion</ion-col>
+        <ion-col>Precio</ion-col>
+        <ion-col>Disponible</ion-col>
+        <ion-col>Fecha</ion-col>
+        <ion-col>Operaciones</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let a of alojamientos" class="ion-text-center ion-padding-bottom ion-padding-top ion-align-items-center row">
+      <ion-col>{{a.id}}</ion-col>
+      <ion-col>{{a.descripcion || 'N/A'}}</ion-col>
+      <ion-col>{{a.ubicacion || 'N/A'}}</ion-col>
+      <ion-col>{{a.precio | currency:'Gs. ':'symbol'}}</ion-col>
+      <ion-col>{{a.disponible ? 'Sí' : 'No'}}</ion-col>
+      <ion-col> {{a.fecha?.toDate() | date:'dd/MM/yyyy'}}</ion-col>
+     
+      <ion-col>
+        <ion-buttons class="ion-justify-content-center">
+            <ion-button fill="clear" shape="round">
+                <ion-icon color="warnig" name="create"></ion-icon>
+            </ion-button>
+               <ion-icon color="danger" name="trash"></ion-icon>
+        </ion-buttons>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
